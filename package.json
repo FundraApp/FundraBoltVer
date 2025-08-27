@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "cd FundraBoltVer && npm ci && npm run build"
+  },
   "devDependencies": {
     "vite": "^6.3.5"
   }
