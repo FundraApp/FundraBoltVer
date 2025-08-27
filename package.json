@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "build": "cd FundraBoltVer && npm ci && npm run build"
+    "build": "cd FundraBoltVer && npm run build"
   },
   "devDependencies": {
     "vite": "^6.3.5"
   }
 }
+//chuj w duipe cwelom
