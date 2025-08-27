@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "FundraBoltVer/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "FundraBoltVer/dist" }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/FundraBoltVer/dist/$1" }
+  ]
+}
