@@ -1,9 +1,11 @@
 {
+  "name": "eublik-root",
+  "private": true,
+  "version": "1.0.0",
   "scripts": {
-    "build": "cd FundraBoltVer && npm run build"
+    "build": "cd FundraBoltVer && npm ci && npm run build"
   },
   "devDependencies": {
     "vite": "^6.3.5"
   }
 }
-//chuj w duipe cwelom
