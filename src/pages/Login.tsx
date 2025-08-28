@@ -39,18 +39,18 @@ const Login = () => {
       if (!res.ok) {
         if (data.detail && data.detail.toLowerCase().includes("kyc not completed")) {
           window.location.href = data.KYC_url;
+        } 
+        else {
+          throw new Error("Login failed");
         }
-        throw new Error("Login failed");
       }
 
       localStorage.setItem("token", "Bearer " + data.access_token);
-
+       navigate('/dashboard');
       
     } catch(err) {
       console.log("Error: ", err);
     }
-
-    navigate('/dashboard');
   };
 
   return (

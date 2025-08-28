@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Home, 
@@ -20,6 +20,13 @@ import {
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if(token == "" || token == "Bearer ") {
+      navigate('/');
+    }
+  }, [navigate]);
 
   const handleLogout = () => {
     navigate('/');
