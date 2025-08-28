@@ -160,13 +160,17 @@ const Homepage = () => {
               <img src={features[0].image} alt="preview" className="w-full h-full object-cover rounded-xl" />
             </div>
             <div className="hidden sm:block absolute right-6 bottom-6 w-44 h-28 bg-white/90 rounded-2xl shadow-md p-1 transform -rotate-2 overflow-hidden">
-              {/* Smiling-person preview image */}
-              <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="happy user" className="w-full h-full object-cover rounded-xl" />
+              {/* User-requested Pexels preview image */}
+              <img src="https://images.pexels.com/photos/3618162/pexels-photo-3618162.jpeg?auto=compress&cs=tinysrgb&w=600" alt="user preview" className="w-full h-full object-cover rounded-xl" />
             </div>
-            <div className="hidden md:flex absolute -right-16 top-20 w-44 h-28 bg-white/95 rounded-xl shadow-sm p-3 items-center justify-center text-sm text-gray-700">
+            <div className="hidden md:flex absolute -right-16 top-20 w-52 h-28 bg-white/95 rounded-xl shadow-sm p-3 items-center justify-center text-sm text-gray-700">
               <div className="flex items-center space-x-3">
-                {/* emoji flags are compact and widely supported */}
-                <div className="text-2xl leading-none">🇺🇸 🇬🇧 🇫🇷 🇩🇪 🇯🇵</div>
+                {/* Use small PNG flags from flagcdn.com for consistent rendering */}
+                <img src="https://flagcdn.com/w20/us.png" width="28" height="20" alt="US" className="rounded-sm shadow-sm" />
+                <img src="https://flagcdn.com/w20/gb.png" width="28" height="20" alt="GB" className="rounded-sm shadow-sm" />
+                <img src="https://flagcdn.com/w20/fr.png" width="28" height="20" alt="FR" className="rounded-sm shadow-sm" />
+                <img src="https://flagcdn.com/w20/de.png" width="28" height="20" alt="DE" className="rounded-sm shadow-sm" />
+                <img src="https://flagcdn.com/w20/jp.png" width="28" height="20" alt="JP" className="rounded-sm shadow-sm" />
                 <div className="ml-2 text-left">
                   <div className="font-bold text-sm">150+</div>
                   <div className="text-xs text-gray-600">countries</div>
