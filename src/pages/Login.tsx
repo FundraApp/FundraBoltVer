@@ -26,7 +26,7 @@ const Login = () => {
     };
 
     try {
-      const res = await fetch("https://api.fundra/auth/login", {
+      const res = await fetch("https://api.fundra.site/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
