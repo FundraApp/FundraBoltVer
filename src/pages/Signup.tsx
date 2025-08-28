@@ -58,10 +58,10 @@ const Signup = () => {
         const data = await res.json();
 
         if (!res.ok) {
-          if (data.detail.toLowerCase().includes("email already in use")) {
+          if (data.detail && data.detail.toLowerCase().includes("email already in use")) {
             throw new Error("email already in use");
           }
-          if (data.detail.toLowerCase().includes("username already exists")) {
+          if (data.detail && data.detail.toLowerCase().includes("username already exists")) {
             throw new Error("username already in use")
           }
 
@@ -71,7 +71,7 @@ const Signup = () => {
         }
 
         localStorage.setItem("token", "Bearer " + data.access_token);
-        window.location.href = data.KYC_url;
+        window.location.href = data.KYC_url; 
       } catch (err) {
         console.log("Error: ", err);
       }
