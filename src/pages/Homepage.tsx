@@ -163,17 +163,20 @@ const Homepage = () => {
               {/* User-requested Pexels preview image */}
               <img src="https://images.pexels.com/photos/3618162/pexels-photo-3618162.jpeg?auto=compress&cs=tinysrgb&w=600" alt="user preview" className="w-full h-full object-cover rounded-xl" />
             </div>
-            <div className="hidden md:flex absolute -right-16 top-20 w-52 h-28 bg-white/95 rounded-xl shadow-sm p-3 items-center justify-center text-sm text-gray-700">
-              <div className="flex items-center space-x-3">
-                {/* Use small PNG flags from flagcdn.com for consistent rendering */}
-                <img src="https://flagcdn.com/w20/us.png" width="28" height="20" alt="US" className="rounded-sm shadow-sm" />
-                <img src="https://flagcdn.com/w20/gb.png" width="28" height="20" alt="GB" className="rounded-sm shadow-sm" />
-                <img src="https://flagcdn.com/w20/fr.png" width="28" height="20" alt="FR" className="rounded-sm shadow-sm" />
-                <img src="https://flagcdn.com/w20/de.png" width="28" height="20" alt="DE" className="rounded-sm shadow-sm" />
-                <img src="https://flagcdn.com/w20/jp.png" width="28" height="20" alt="JP" className="rounded-sm shadow-sm" />
-                <div className="ml-2 text-left">
-                  <div className="font-bold text-sm">150+</div>
-                  <div className="text-xs text-gray-600">countries</div>
+            <div className="hidden md:flex absolute -right-16 top-20 w-64 h-28 bg-white rounded-xl shadow-sm p-3 items-center justify-center text-sm text-gray-700 overflow-hidden">
+              <div className="flex items-center w-full">
+                <div className="w-2/3 grid grid-cols-3 gap-1">
+                  {/* compact flag grid - pngs with object-contain to avoid overflow */}
+                  <img src="https://flagcdn.com/w80/us.png" alt="US" className="w-full h-6 object-contain rounded-sm shadow-sm bg-white" />
+                  <img src="https://flagcdn.com/w80/gb.png" alt="GB" className="w-full h-6 object-contain rounded-sm shadow-sm bg-white" />
+                  <img src="https://flagcdn.com/w80/fr.png" alt="FR" className="w-full h-6 object-contain rounded-sm shadow-sm bg-white" />
+                  <img src="https://flagcdn.com/w80/de.png" alt="DE" className="w-full h-6 object-contain rounded-sm shadow-sm bg-white" />
+                  <img src="https://flagcdn.com/w80/jp.png" alt="JP" className="w-full h-6 object-contain rounded-sm shadow-sm bg-white" />
+                  <img src="https://flagcdn.com/w80/pt.png" alt="PT" className="w-full h-6 object-contain rounded-sm shadow-sm bg-white" />
+                </div>
+                <div className="w-1/3 pl-3">
+                  <div className="font-bold text-sm text-black">150+</div>
+                  <div className="text-xs text-gray-600">Countries</div>
                 </div>
               </div>
             </div>
@@ -332,7 +335,7 @@ const Homepage = () => {
             </div>
           </div>
           <div className="border-t border-gray-200 mt-12 pt-8 text-center text-gray-500">
-            <p>&copy; 2024 Fundra. All rights reserved. Fundra is a registered trademark.</p>
+            <p>&copy; 2025 Fundra. All rights reserved. Fundra is a registered trademark.</p>
           </div>
         </div>
       </footer>
