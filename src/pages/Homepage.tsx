@@ -67,7 +67,7 @@ const Homepage = () => {
   ];
 
   return (
-  <div className="min-h-screen bg-white">
+  <div className="min-h-screen bg-white pt-16">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,10 +114,10 @@ const Homepage = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
           <div className="text-white">
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-4">
+            <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-4 break-words">
               Money made simpler
             </h1>
-            <p className="text-lg lg:text-xl text-blue-100 mb-6 leading-relaxed max-w-xl">
+            <p className="text-lg lg:text-xl text-blue-100 mb-6 leading-relaxed max-w-xl break-words">
               Send, spend, and save — everything you need to manage your money in one beautiful, secure app.
             </p>
             <div className="flex items-center space-x-4">
@@ -129,8 +129,9 @@ const Homepage = () => {
             </div>
           </div>
 
-          <div className="relative flex items-center justify-center">
-            <div className="relative w-80 h-96 bg-white rounded-3xl shadow-2xl p-6 transform hover:scale-105 transition-transform duration-500">
+          <div className="relative flex items-center justify-center mt-8 sm:mt-0">
+            {/* Main device/card preview - responsive width on small screens */}
+            <div className="relative w-full max-w-xs sm:max-w-sm md:w-80 h-auto md:h-96 bg-white rounded-3xl shadow-2xl p-6 transform hover:scale-105 transition-transform duration-500">
               <div className="bg-gray-50 rounded-2xl h-full p-4">
                 <div className="text-center mb-4">
                   <span className="text-sm text-gray-500">Personal</span>
@@ -151,6 +152,20 @@ const Homepage = () => {
                   </div>
                   <div className="text-green-600 font-bold">+€2,550</div>
                 </div>
+              </div>
+            </div>
+
+            {/* Decorative floating previews around the main card for visual interest */}
+            <div className="hidden sm:block absolute -left-8 top-8 w-36 h-44 bg-white/90 rounded-2xl shadow-md p-3 transform rotate-2">
+              <img src={features[0].image} alt="preview" className="w-full h-full object-cover rounded-xl" />
+            </div>
+            <div className="hidden sm:block absolute right-6 bottom-6 w-44 h-28 bg-white/90 rounded-2xl shadow-md p-3 transform -rotate-2">
+              <img src={features[1].image} alt="preview2" className="w-full h-full object-cover rounded-xl" />
+            </div>
+            <div className="hidden md:block absolute -right-16 top-20 w-28 h-28 bg-white/90 rounded-xl shadow-sm flex items-center justify-center text-sm text-gray-700">
+              <div className="text-center">
+                <div className="font-bold">150+</div>
+                <div className="text-xs">countries</div>
               </div>
             </div>
           </div>
