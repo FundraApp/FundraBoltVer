@@ -84,12 +84,31 @@ const Signup = () => {
           // surface status and server detail for easier debugging
           console.error('Register failed', res.status, data);
 
-          // show detailed message if backend provided one
-          const detail = (data && (data.detail || data.message)) || JSON.stringify(data) || `HTTP ${res.status}`;
-          setError(String(detail));
+          // extract backend detail (could be string, object, or array)
+          const rawDetail = (data && (data.detail || data.message)) || data || `HTTP ${res.status}`;
+
+          // format the detail into a readable string
+          let detailStr: string;
+          if (Array.isArray(rawDetail)) {
+            detailStr = rawDetail
+              .map((d: any) => {
+                if (!d) return '';
+                if (typeof d === 'string') return d;
+                if (typeof d === 'object') return d.msg || JSON.stringify(d);
+                return String(d);
+              })
+              .filter(Boolean)
+              .join('; ');
+          } else if (rawDetail && typeof rawDetail === 'object') {
+            detailStr = rawDetail.msg || JSON.stringify(rawDetail);
+          } else {
+            detailStr = String(rawDetail);
+          }
+
+          setError(detailStr);
 
           // keep console error for devs
-          throw new Error('Register failed: ' + String(detail));
+          throw new Error('Register failed: ' + detailStr);
         }
 
         // success - persist token and redirect to KYC if provided
