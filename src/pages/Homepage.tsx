@@ -156,14 +156,14 @@ const Homepage = () => {
             </div>
 
             {/* Decorative floating previews around the main card for visual interest */}
-            <div className="hidden sm:block absolute -left-8 top-8 w-36 h-44 bg-white/90 rounded-2xl shadow-md p-3 transform rotate-2">
+            <div className="hidden sm:block absolute -left-8 top-8 w-36 h-44 bg-white/90 rounded-2xl shadow-md p-3 transform rotate-2 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
               <img src={features[0].image} alt="preview" className="w-full h-full object-cover rounded-xl" />
             </div>
-            <div className="hidden sm:block absolute right-6 bottom-6 w-44 h-28 bg-white/90 rounded-2xl shadow-md p-1 transform -rotate-2 overflow-hidden">
+            <div className="hidden sm:block absolute right-6 bottom-6 w-44 h-28 bg-white/90 rounded-2xl shadow-md p-1 transform -rotate-2 overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg">
               {/* User-requested Pexels preview image */}
               <img src="https://images.pexels.com/photos/3618162/pexels-photo-3618162.jpeg?auto=compress&cs=tinysrgb&w=600" alt="user preview" className="w-full h-full object-cover rounded-xl" />
             </div>
-            <div className="hidden md:flex absolute -right-16 top-20 w-64 h-28 bg-white rounded-xl shadow-sm p-3 items-center justify-center text-sm text-gray-700 overflow-hidden">
+            <div className="hidden md:flex absolute -right-16 top-20 w-64 h-28 bg-white rounded-xl shadow-sm p-3 items-center justify-center text-sm text-gray-700 overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg">
               <div className="flex items-center w-full">
                 <div className="w-2/3 grid grid-cols-3 gap-1">
                   {/* compact flag grid - pngs with object-contain to avoid overflow */}
