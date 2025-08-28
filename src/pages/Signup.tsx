@@ -58,17 +58,17 @@ const Signup = () => {
         const data = await res.json();
 
         if (!res.ok) {
-          if (data.detail && String(data.detail).toLowerCase().includes("email already in use")) {
+          const detailStr = String(data.detail || "");
+          
+          if (detailStr.toLowerCase().includes("email already in use")) {
             throw new Error("email already in use");
           }
 
-          if (data.detail && String(data.detail).toLowerCase().includes("username already exists")) {
+          if (detailStr.toLowerCase().includes("username already exists")) {
             throw new Error("username already in use");
           }
 
-          else {
-            throw new Error("Register failed");
-          }
+          throw new Error("Register failed");
         }
 
         localStorage.setItem("token", "Bearer " + data.access_token);
