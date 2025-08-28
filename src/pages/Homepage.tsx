@@ -159,13 +159,36 @@ const Homepage = () => {
             <div className="hidden sm:block absolute -left-8 top-8 w-36 h-44 bg-white/90 rounded-2xl shadow-md p-3 transform rotate-2">
               <img src={features[0].image} alt="preview" className="w-full h-full object-cover rounded-xl" />
             </div>
-            <div className="hidden sm:block absolute right-6 bottom-6 w-44 h-28 bg-white/90 rounded-2xl shadow-md p-3 transform -rotate-2">
-              <img src={features[1].image} alt="preview2" className="w-full h-full object-cover rounded-xl" />
+            <div className="hidden sm:flex absolute right-6 bottom-6 w-44 h-28 bg-white/90 rounded-2xl shadow-md p-3 transform -rotate-2 items-center justify-center overflow-hidden">
+              {/* Using an inline SVG flag-strip instead of external image to avoid load issues */}
+              <svg viewBox="0 0 120 76" className="w-full h-full rounded-xl">
+                <rect x="0" y="0" width="40" height="76" fill="#00247d" />
+                <rect x="40" y="0" width="40" height="76" fill="#d52b1e" />
+                <rect x="80" y="0" width="40" height="76" fill="#00a859" />
+                <rect x="6" y="6" width="28" height="64" fill="#ffffff" opacity="0.08" />
+              </svg>
             </div>
-            <div className="hidden md:block absolute -right-16 top-20 w-28 h-28 bg-white/90 rounded-xl shadow-sm flex items-center justify-center text-sm text-gray-700">
-              <div className="text-center">
-                <div className="font-bold">150+</div>
-                <div className="text-xs">countries</div>
+            <div className="hidden md:flex absolute -right-16 top-20 w-36 h-28 bg-white/95 rounded-xl shadow-sm p-2 items-center justify-center text-sm text-gray-700">
+              <div className="flex items-center space-x-2">
+                {/* small flag icons */}
+                <svg width="28" height="18" viewBox="0 0 28 18" className="rounded-sm shadow-sm">
+                  <rect width="28" height="18" fill="#ce1126" />
+                  <rect x="0" y="6" width="28" height="6" fill="#ffffff" />
+                  <rect x="0" y="12" width="28" height="6" fill="#0039a6" />
+                </svg>
+                <svg width="28" height="18" viewBox="0 0 28 18" className="rounded-sm shadow-sm">
+                  <rect width="28" height="18" fill="#ffce00" />
+                  <rect x="0" y="8" width="28" height="2" fill="#d52b1e" />
+                </svg>
+                <svg width="28" height="18" viewBox="0 0 28 18" className="rounded-sm shadow-sm">
+                  <rect width="28" height="18" fill="#ffffff" />
+                  <rect x="0" y="0" width="28" height="6" fill="#009b3a" />
+                  <rect x="0" y="12" width="28" height="6" fill="#002776" />
+                </svg>
+                <div className="ml-2 text-left">
+                  <div className="font-bold text-sm">150+</div>
+                  <div className="text-xs text-gray-600">countries</div>
+                </div>
               </div>
             </div>
           </div>
