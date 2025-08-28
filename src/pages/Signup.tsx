@@ -12,6 +12,8 @@ const Signup = () => {
     countryCode: '+1',
     phoneNumber: ''
   });
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
   const totalSteps = 4;
@@ -33,11 +35,24 @@ const Signup = () => {
   };
 
   const nextStep = async () => {
+    // clear previous error when advancing
+    setError(null);
+
     if (currentStep < totalSteps) {
+      // simple client-side validations per step
+      if (currentStep === 1 && !formData.email) {
+        setError('Please enter an email address');
+        return;
+      }
+
+      if (currentStep === 3 && formData.password !== formData.confirmPassword) {
+        setError('Passwords do not match');
+        return;
+      }
+
       setCurrentStep(currentStep + 1);
     } else {
       // Final step - create account with Fundra api
-
       const payload = {
         email: formData.email,
         username: formData.username,
@@ -46,35 +61,53 @@ const Signup = () => {
         phone_number: formData.phoneNumber.toString(),
       };
 
+      console.log('Register payload:', payload);
+      setIsSubmitting(true);
+
       try {
-        const res = await fetch("https://api.fundra.site/auth/register", {
-          method: "POST",
+        const res = await fetch('https://api.fundra.site/auth/register', {
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(payload),
         });
 
-        const data = await res.json();
-
-        if (!res.ok) {
-          const detailStr = String(data.detail || "");
-          
-          if (detailStr.toLowerCase().includes("email already in use")) {
-            throw new Error("email already in use");
-          }
-
-          if (detailStr.toLowerCase().includes("username already exists")) {
-            throw new Error("username already in use");
-          }
-
-          throw new Error("Register failed");
+        let data: any = null;
+        try {
+          data = await res.json();
+        } catch (parseErr) {
+          console.error('Failed to parse JSON response', parseErr);
         }
 
-        localStorage.setItem("token", "Bearer " + data.access_token);
-        window.location.href = data.KYC_url; 
-      } catch (err) {
-        console.log("Error: ", err);
+        if (!res.ok) {
+          // surface status and server detail for easier debugging
+          console.error('Register failed', res.status, data);
+
+          // show detailed message if backend provided one
+          const detail = (data && (data.detail || data.message)) || JSON.stringify(data) || `HTTP ${res.status}`;
+          setError(String(detail));
+
+          // keep console error for devs
+          throw new Error('Register failed: ' + String(detail));
+        }
+
+        // success - persist token and redirect to KYC if provided
+        if (data && data.access_token) {
+          localStorage.setItem('token', 'Bearer ' + data.access_token);
+        }
+
+        if (data && data.KYC_url) {
+          window.location.href = data.KYC_url;
+        } else {
+          // fallback: navigate to dashboard if KYC url is not returned
+          navigate('/dashboard');
+        }
+      } catch (err: any) {
+        // already set a user-friendly message in setError above when possible
+        console.log('Error: ', err);
+      } finally {
+        setIsSubmitting(false);
       }
       
     }
@@ -290,6 +323,13 @@ const Signup = () => {
           {/* Step Content */}
           <form onSubmit={(e) => { e.preventDefault(); nextStep(); }}>
             {getStepContent()}
+
+            {/* show error if present */}
+            {error && (
+              <div className="mt-4 p-3 rounded-md bg-red-50 border border-red-100 text-red-700 text-sm">
+                {error}
+              </div>
+            )}
             
             {/* Navigation Buttons */}
             <div className="flex items-center justify-between mt-8 space-x-4">
@@ -306,9 +346,10 @@ const Signup = () => {
               
               <button
                 type="submit"
-                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-600 transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                disabled={isSubmitting}
+                className={`flex-1 ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''} bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-600 transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center space-x-2`}
               >
-                <span>{currentStep === totalSteps ? 'Create Account' : 'Continue'}</span>
+                <span>{isSubmitting ? 'Creating...' : (currentStep === totalSteps ? 'Create Account' : 'Continue')}</span>
                 {currentStep === totalSteps ? <Check className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
               </button>
             </div>
