@@ -32,11 +32,41 @@ const Signup = () => {
     });
   };
 
-  const nextStep = () => {
+  const nextStep = async () => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Final step - create account
+      // Final step - create account with Fundra api
+
+      const payload = {
+        email: formData.email,
+        username: formData.username,
+        password: formData.password,
+        country_code: formData.countryCode,
+        phone_number: formData.phoneNumber,
+      };
+
+      try {
+        const res = await fetch("https://api.fundra.site/auth/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+          throw new Error("Registration failed");
+        }
+
+        const data = await res.json();
+        localStorage.setItem("token", "Bearer" + data.access_token);
+        window.location.href = data.KYC_url; //
+      } catch (err) {
+        console.log("Error ", err);
+      }
+      
+
       navigate('/dashboard');
     }
   };
