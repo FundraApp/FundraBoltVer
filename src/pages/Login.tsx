@@ -23,7 +23,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-cyan-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Back to Home */}
         <Link 
@@ -35,16 +35,14 @@ const Login = () => {
         </Link>
 
         {/* Login Card */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+  <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 animate-fadeInUp">
           {/* Logo and Title */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center">
                 <CreditCard className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
-                Fundra
-              </span>
+              <span className="text-2xl font-bold text-slate-900">Fundra</span>
             </div>
             <h1 className="text-2xl font-bold text-slate-900 mb-2">Welcome back</h1>
             <p className="text-slate-600">Sign in to your account to continue</p>
@@ -64,7 +62,7 @@ const Login = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   placeholder="Enter your email"
                   required
                 />
@@ -83,7 +81,7 @@ const Login = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   placeholder="Enter your password"
                   required
                 />
@@ -98,14 +96,14 @@ const Login = () => {
                 />
                 <span className="ml-2 text-slate-600">Remember me</span>
               </label>
-              <a href="#" className="text-cyan-600 hover:text-cyan-700 transition-colors">
+              <a href="#" className="text-blue-600 hover:text-blue-700 transition-colors">
                 Forgot password?
               </a>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 text-white py-3 rounded-xl font-semibold hover:from-cyan-600 hover:to-teal-700 transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-xl"
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-600 transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-xl"
             >
               Sign In
             </button>
@@ -115,7 +113,7 @@ const Login = () => {
           <div className="mt-8 text-center">
             <p className="text-slate-600">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-cyan-600 hover:text-cyan-700 font-semibold transition-colors">
+              <Link to="/signup" className="text-blue-600 hover:text-blue-700 font-semibold transition-colors">
                 Sign up
               </Link>
             </p>

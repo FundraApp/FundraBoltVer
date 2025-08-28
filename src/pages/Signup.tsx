@@ -211,7 +211,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-cyan-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Back to Home */}
         <Link 
@@ -223,16 +223,14 @@ const Signup = () => {
         </Link>
 
         {/* Signup Card */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+  <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 animate-fadeInUp">
           {/* Logo and Progress */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center">
                 <CreditCard className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
-                Fundra
-              </span>
+              <span className="text-2xl font-bold text-slate-900">Fundra</span>
             </div>
             
             {/* Progress Bar */}
@@ -243,7 +241,7 @@ const Signup = () => {
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div 
-                  className="bg-gradient-to-r from-cyan-500 to-teal-600 h-2 rounded-full transition-all duration-300"
+                  className="bg-gradient-to-r from-blue-600 to-blue-500 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${(currentStep / totalSteps) * 100}%` }}
                 ></div>
               </div>
@@ -269,7 +267,7 @@ const Signup = () => {
               
               <button
                 type="submit"
-                className="flex-1 bg-gradient-to-r from-cyan-500 to-teal-600 text-white py-3 rounded-xl font-semibold hover:from-cyan-600 hover:to-teal-700 transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-600 transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
               >
                 <span>{currentStep === totalSteps ? 'Create Account' : 'Continue'}</span>
                 {currentStep === totalSteps ? <Check className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
