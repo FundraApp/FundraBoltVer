@@ -58,11 +58,12 @@ const Signup = () => {
         const data = await res.json();
 
         if (!res.ok) {
-          if (data.detail && data.detail.toLowerCase().includes("email already in use")) {
+          if (data.detail && String(data.detail).toLowerCase().includes("email already in use")) {
             throw new Error("email already in use");
           }
-          if (data.detail && data.detail.toLowerCase().includes("username already exists")) {
-            throw new Error("username already in use")
+
+          if (data.detail && String(data.detail).toLowerCase().includes("username already exists")) {
+            throw new Error("username already in use");
           }
 
           else {
