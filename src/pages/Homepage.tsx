@@ -201,7 +201,7 @@ const Homepage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 p-6 flex flex-col">
+              <div key={index} className="bg-white rounded-2xl shadow-sm transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 p-6 flex flex-col">
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-lg">{feature.icon}</div>
                   <div>
@@ -236,7 +236,7 @@ const Homepage = () => {
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index}
-                className="bg-gray-50 rounded-3xl p-8 hover:bg-gray-100 transition-colors"
+                className="bg-gray-50 rounded-3xl p-8 transform transition-transform duration-300 hover:scale-105 hover:shadow-md hover:bg-gray-100"
               >
                 <div className="flex items-center space-x-1 mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
