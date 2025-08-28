@@ -16,9 +16,40 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Simulate login - redirect to dashboard
+
+    const payload = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+    try {
+      const res = await fetch("https://api.fundra/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        if (data.detail && data.detail.toLowerCase().includes("kyc not completed")) {
+          window.location.href = data.KYC_url;
+        }
+        throw new Error("Login failed");
+      }
+
+      localStorage.setItem("token", "Bearer " + data.access_token);
+
+      
+    } catch(err) {
+      console.log("Error: ", err);
+    }
+
     navigate('/dashboard');
   };
 

@@ -43,7 +43,7 @@ const Signup = () => {
         username: formData.username,
         password: formData.password,
         country_code: formData.countryCode,
-        phone_number: formData.phoneNumber,
+        phone_number: formData.phoneNumber.toString(),
       };
 
       try {
@@ -60,14 +60,12 @@ const Signup = () => {
         }
 
         const data = await res.json();
-        localStorage.setItem("token", "Bearer" + data.access_token);
+        localStorage.setItem("token", "Bearer " + data.access_token);
         window.location.href = data.KYC_url; //
       } catch (err) {
-        console.log("Error ", err);
+        console.log("Error: ", err);
       }
       
-
-      navigate('/dashboard');
     }
   };
 
